@@ -1,7 +1,7 @@
 # liveview_chat_app
 LiveView Chat App with TailwindCSS and POW Auth Boilerplate 
 
-![alt text](https://imgur.com/8sietRZ)
+![alt text](https://i.imgur.com/8sietRZ.png)
 
 To start your Phoenix server:
 
