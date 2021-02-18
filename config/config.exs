@@ -25,7 +25,8 @@ config :logger, :console,
 
 config :live_chat_app, :pow,
   user: LiveChatApp.Users.User,
-  repo: LiveChatApp.Repo
+  repo: LiveChatApp.Repo,
+  web_module: LiveChatAppWeb
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason

@@ -13,20 +13,20 @@
     <header>
       <section class="container">
         <nav role="navigation">
-          <ul>
+          <ul class="flex flex-row justify-between items-center">
             <%= if Pow.Plug.current_user(@conn) do %>
-              <li>
-                <%= @current_user.email %>
-              </li>
               <li>
                 <%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete %>
               </li>
+              <li class="text-black font-medium mr-4">
+                <%= @current_user.email %>
+              </li>
             <% else %>
               <li>
-                <%= link "Register", to: Routes.pow_registration_path(@conn, :new) %>
+                <%= link "Register", to: Routes.pow_registration_path(@conn, :new), class: "mr-4" %>
               </li>
               <li>
-                <%= link "Sign in", to: Routes.pow_session_path(@conn, :new) %>
+                <%= link "Sign in", to: Routes.pow_session_path(@conn, :new), class: " text-white font-bold rounded bg-blue-500 hover:bg-blue-600 hover:text-white shadow-md py-4 px-6 inline-flex items-center focus:outline-none mr-4" %>
               </li>
             <% end %>
           </ul>
