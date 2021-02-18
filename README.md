@@ -18,4 +18,11 @@ Before going to the liveview chat app, first you need to:
 
 Right now I automatically created chat conversations based on the number of users, 
 so you can quickly check its functionality
-`
+
+Features:
+- Authentication using POW Auth
+- Integrate TailwindCSS Framework
+- Realtime Messaging (LiveView, PubSub)
+- Unread messages counter (automatically reads all messages when conversation was open)
+- Latest message preview (beside unread messages counter)
+- Search conversation
