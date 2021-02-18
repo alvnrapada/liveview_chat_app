@@ -13,15 +13,27 @@
           <span class="h-px bg-gray-300" style="flex: .48"></span>
         </div>
         <%= for m <- sort_messages(messages) do %>
-          <li class="flex mb-8 w-4/5">
-            <img src="<%= get_dp(m.user) %>" alt="User Avatar" class="w-12 h-12 mr-3 rounded-full object-cover">
-            <div class="flex-1">
-              <h5 class="mb-2 font-bold"><%= parse_name(m.user) %></h5>
-              <p class="text-gray-800 leading-snug">
-              <%= m.content %>
-              </p>
-            </div>
-          </li>
+          <%= if m.user_id == @current_user.id do %>
+            <li class="flex mb-8 w-full justify-end items-end">
+              <div class="flex-1 text-right mr-4">
+                <h5 class="text-xl mb-2 font-bold"><%= parse_name(m.user) %></h5>
+                <p class="text-gray-800 leading-snug">
+                <%= m.content %>
+                </p>
+              </div>
+              <img src="<%= get_dp(m.user) %>" alt="User Avatar" class="w-12 h-12 mr-3 rounded-full object-cover">
+            </li>
+          <% else %>
+            <li class="flex mb-8 w-4/5 justify-end">
+              <img src="<%= get_dp(m.user) %>" alt="User Avatar" class="w-12 h-12 mr-3 rounded-full object-cover">
+              <div class="flex-1">
+                <h5 class="text-xl mb-2 font-bold"><%= parse_name(m.user) %></h5>
+                <p class="text-gray-800 leading-snug">
+                <%= m.content %>
+                </p>
+              </div>
+            </li>
+          <% end %>
         <% end %>
       <% end %>
     </ul>

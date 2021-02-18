@@ -44,7 +44,7 @@ defmodule LiveChatAppWeb.ChatView do
     |> Enum.sort_by(& &1.inserted_at, {:asc, NaiveDateTime})
   end
 
-  @default_dp "https://i.pravatar.cc/300"
+  @default_dp "https://avatars.githubusercontent.com/u/62341430?s=60&v=4"
   def get_dp(%{profile_picture: pp}) when not is_nil(pp), do: pp
   def get_dp(_user), do: @default_dp
 
