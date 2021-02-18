@@ -1,0 +1,19 @@
+<img src="<%= @info.profile_picture %>" alt="Coach Avatar" class="w-16 h-16 mr-3 rounded object-cover">
+<div class="flex-1">
+  <div class="flex flex-row items-center justify-between mb-2">
+    <h5 class="font-bold">
+      <%= @info.from %>
+    </h5>
+    <span class="items-end text-xs text-gray-400">
+      <time><%= get(@info, ~w(latest_message time)a) || @info.time %></time>
+    </span>
+  </div>
+  <div class="flex items-center justify-between">
+    <p class="text-sm"><%= get(@info, ~w(latest_message message)a) %></p>
+    <%= if @info.unread_count > 0 do %>
+      <span class="w-5 h-5 bg-red-600 text-white leading-5 text-xs text-center rounded-full">
+        <%= @info.unread_count %>
+      </span>
+    <% end %>
+  </div>
+</div>

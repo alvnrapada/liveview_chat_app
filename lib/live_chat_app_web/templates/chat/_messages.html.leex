@@ -1,0 +1,45 @@
+<div class="relative h-full flex-col hidden w-2/3 ml-5 -mr-5 border-l-2 border-gray-300 lg:flex">
+  <header class="w-full py-4 px-8 bg-white border-b-2 border-gray-300">
+    <h5 class="font-bold"><%= parse_from(@selected_topic, @current_user.id) %></h5>
+  </header>
+
+  <!-- Messages -->
+  <div class="bg-gray-100 overflow-auto flex-1">
+    <ul class="overflow-auto mb-20 px-6">
+      <%= for {date, messages} <- group_messages(@topic_messages) do %>
+        <div class="flex justify-between items-center my-8 relative">
+          <span class="h-px bg-gray-500" style="flex: .48"></span>
+          <span><%= date %></span>
+          <span class="h-px bg-gray-500" style="flex: .48"></span>
+        </div>
+        <%= for m <- sort_messages(messages) do %>
+          <li class="flex mb-8 w-4/5">
+            <img src="<%= get_dp(m.user) %>" alt="User Avatar" class="w-12 h-12 mr-3 rounded-full object-cover">
+            <div class="flex-1">
+              <h5 class="mb-2 font-bold"><%= parse_name(m.user) %></h5>
+              <p class="text-gray-800 leading-snug">
+              <%= m.content %>
+              </p>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+
+    <!-- Message writing input -->
+    <form phx-submit="send_message" class="flex items-center absolute bottom-0 left-0 w-full bg-white border-t-2 border-gray-300 p-4">
+      <textarea class="flex flex-1 py-4 px-3 focus:outline-none resize-none" name="content" placeholder="Write a message..." rows="1" required autofocus <%= if @sending, do: 'readonly' %>></textarea>
+      <div class="pl-2">
+        <%= if @sending do %>
+        <button type="submit" class="bg-gray-100 text-gray-800 font-bold rounded border-b-2 border-gray-600  shadow-md py-2 px-6 inline-flex items-center focus:outline-none pointer-events-none">
+          Sending...
+        </button>
+        <% else %>
+        <button type="submit" class="bg-white text-gray-800 font-bold rounded border-b-2 border-red-600 hover:border-red-600 hover:bg-red-600 hover:text-white shadow-md py-2 px-6 inline-flex items-center focus:outline-none">
+          Send
+        </button>
+      <% end %>
+      </div>
+    </form>
+  </div>
+</div>
