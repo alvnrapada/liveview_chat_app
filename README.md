@@ -26,3 +26,4 @@ Features:
 - Unread messages counter (automatically reads all messages when the conversation was open)
 - Latest message preview (beside unread messages counter)
 - Search conversation feature
+- Messages grouped by date sent
