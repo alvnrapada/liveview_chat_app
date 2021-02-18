@@ -1,6 +1,6 @@
 # liveview_chat_app
 LiveView Chat App with TailwindCSS and POW Auth Boilerplate 
-
+![alt text]("/images/phoenix.png")
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
