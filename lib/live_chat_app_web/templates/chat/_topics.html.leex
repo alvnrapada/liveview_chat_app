@@ -8,10 +8,10 @@
     <ul>
       <%= for t <- @topics do %>
         <% content = render "_info.html", info: parse_topic_info(t, @current_user) %>
-        <li class="cursor-pointer <%= if t.id == @selected_topic.id, do: "border-l-4 border-red-600 bg-gray-100" %>">
+        <li class="cursor-pointer <%= if t.id == @selected_topic.id, do: "border-l-4 border-blue-600 bg-gray-100" %>">
         <%= live_patch content, to: Routes.live_path(
           @socket,
-          CoreBlayzeAppWeb.ChatLive,
+          LiveChatAppWeb.ChatLive,
           topic: t.id
           ), class: "flex p-3 mb-3 " %>
         </li>

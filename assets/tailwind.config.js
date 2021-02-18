@@ -10,7 +10,15 @@ module.exports = {
     extend: {},
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundColor: ["responsive", "hover", "focus", "disabled", "checked"],
+      borderColor: ["responsive", "hover", "focus", "checked"],
+      borderStyle: ["responsive", "disabled", "checked"],
+      boxShadow: ["responsive", "hover", "focus", "disabled", "checked"],
+      cursor: ["responsive", "hover"],
+      textColor: ["responsive", "hover", "focus", "checked"],
+      padding: ["responsive", "disabled"],
+    },
   },
   plugins: [],
 }

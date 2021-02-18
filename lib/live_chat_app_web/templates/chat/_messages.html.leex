@@ -1,16 +1,16 @@
 <div class="relative h-full flex-col hidden w-2/3 ml-5 -mr-5 border-l-2 border-gray-300 lg:flex">
-  <header class="w-full py-4 px-8 bg-white border-b-2 border-gray-300">
+  <header class="w-full py-4 px-8 bg-white border-b-2 border-gray-300 mb-0">
     <h5 class="font-bold"><%= parse_from(@selected_topic, @current_user.id) %></h5>
   </header>
 
   <!-- Messages -->
   <div class="bg-gray-100 overflow-auto flex-1">
-    <ul class="overflow-auto mb-20 px-6">
+    <ul class="overflow-auto mb-40 px-6">
       <%= for {date, messages} <- group_messages(@topic_messages) do %>
         <div class="flex justify-between items-center my-8 relative">
-          <span class="h-px bg-gray-500" style="flex: .48"></span>
-          <span><%= date %></span>
-          <span class="h-px bg-gray-500" style="flex: .48"></span>
+          <span class="h-px bg-gray-300" style="flex: .48"></span>
+          <span class="text-xl"><%= date %></span>
+          <span class="h-px bg-gray-300" style="flex: .48"></span>
         </div>
         <%= for m <- sort_messages(messages) do %>
           <li class="flex mb-8 w-4/5">
@@ -27,15 +27,15 @@
     </ul>
 
     <!-- Message writing input -->
-    <form phx-submit="send_message" class="flex items-center absolute bottom-0 left-0 w-full bg-white border-t-2 border-gray-300 p-4">
+    <form phx-submit="send_message" class="flex items-center absolute bottom-0 left-0 w-full bg-white border-t-2 border-gray-300 p-4 mb-0">
       <textarea class="flex flex-1 py-4 px-3 focus:outline-none resize-none" name="content" placeholder="Write a message..." rows="1" required autofocus <%= if @sending, do: 'readonly' %>></textarea>
       <div class="pl-2">
         <%= if @sending do %>
-        <button type="submit" class="bg-gray-100 text-gray-800 font-bold rounded border-b-2 border-gray-600  shadow-md py-2 px-6 inline-flex items-center focus:outline-none pointer-events-none">
+        <button type="submit" class="bg-gray-100 text-gray-800 font-bold rounded border-b-2 border-gray-600  shadow-md py-12 px-10 inline-flex items-center focus:outline-none pointer-events-none">
           Sending...
         </button>
         <% else %>
-        <button type="submit" class="bg-white text-gray-800 font-bold rounded border-b-2 border-red-600 hover:border-red-600 hover:bg-red-600 hover:text-white shadow-md py-2 px-6 inline-flex items-center focus:outline-none">
+        <button type="submit" class="font-bold rounded bg-blue-600 hover:bg-blue-600 text-white shadow-md py-12 px-10 inline-flex items-center focus:outline-none">
           Send
         </button>
       <% end %>

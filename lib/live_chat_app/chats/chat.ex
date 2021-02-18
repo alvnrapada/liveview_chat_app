@@ -5,6 +5,7 @@ defmodule LiveChatApp.Chats.Chat do
   alias LiveChatApp.Chats.Message
   alias LiveChatApp.Users.User
 
+  @primary_key {:id, :binary_id, autogenerate: true}
   schema "chats" do
     field(:room_name, :string)
 

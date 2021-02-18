@@ -25,7 +25,7 @@ defmodule LiveChatAppWeb.ChatView do
   end
 
   def parse_name(user) when is_struct(user),
-    do: user.full_name || "#{user.first_name} #{user.last_name}"
+    do: user.email
 
   def parse_name(_user), do: "Anonymous User"
 
@@ -44,9 +44,9 @@ defmodule LiveChatAppWeb.ChatView do
     |> Enum.sort_by(& &1.inserted_at, {:asc, NaiveDateTime})
   end
 
-  @default_dp "https://app-cdn.blayze.io/icons/placeholder/default_user_avatar.svg"
+  @default_dp "https://i.pravatar.cc/300"
   def get_dp(%{profile_picture: pp}) when not is_nil(pp), do: pp
-  def get_dp(_user), do: @default_user_avatar
+  def get_dp(_user), do: @default_dp
 
   # Private Methods
 
@@ -56,7 +56,7 @@ defmodule LiveChatAppWeb.ChatView do
     |> Enum.count()
   end
 
-  defp get_latest_message([], _current_user_id), do: ""
+  defp get_latest_message([], _current_user_id), do: %{}
 
   defp get_latest_message(messages, current_user_id) do
     with message <-

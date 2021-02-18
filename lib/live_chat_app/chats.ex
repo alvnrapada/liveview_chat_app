@@ -28,6 +28,12 @@ defmodule LiveChatApp.Chats do
     |> Repo.get(id)
   end
 
+  def get_users(%User{id: id}) do
+    User
+    |> where([u], u.id != ^id)
+    |> Repo.all()
+  end
+
   def create_chat(params) do
     %Chat{}
     |> Chat.changeset(params)
@@ -41,12 +47,10 @@ defmodule LiveChatApp.Chats do
     |> Enum.filter(fn %{sender: sender, receiver: receiver} ->
       case sender.id == current_user.id do
         true ->
-          string_starts_with?(receiver.first_name, value) or
-            string_starts_with?(receiver.last_name, value)
+          string_starts_with?(receiver.email, value)
 
         _ ->
-          string_starts_with?(sender.first_name, value) or
-            string_starts_with?(sender.last_name, value)
+          string_starts_with?(sender.email, value)
       end
     end)
   end

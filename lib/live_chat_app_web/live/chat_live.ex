@@ -7,7 +7,9 @@ defmodule LiveChatAppWeb.ChatLive do
 
   def mount(_params, session, socket) do
     with current_user <- LiveViewCredentials.get_user(socket, session),
+         _sessions <- create_chat_from_users(current_user),
          topics <- Chats.get_topics(current_user) do
+      IO.inspect(topics)
       if connected?(socket), do: Chats.subscribe()
 
       socket =
@@ -175,6 +177,25 @@ defmodule LiveChatAppWeb.ChatLive do
       end
     end
   end
+
+  # Private
+  defp create_chat_from_users(current_user) when is_struct(current_user) do
+    users = Chats.get_users(current_user)
+    existing_topics = Chats.get_topics(current_user)
+
+    users
+    |> Enum.map(fn f ->
+      case Enum.find(
+             existing_topics,
+             &(f.id == &1.sender_id or f.id == &1.receiver_id)
+           ) do
+        nil -> Chats.create_chat(%{sender_id: current_user.id, receiver_id: f.id})
+        topic -> {:ok, topic}
+      end
+    end)
+  end
+
+  defp create_chat_from_users(_), do: {:ok, []}
 
   defp parse_params(params, user_id, chat_id) do
     params

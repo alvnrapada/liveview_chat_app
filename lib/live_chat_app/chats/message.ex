@@ -7,12 +7,13 @@ defmodule LiveChatApp.Chats.Message do
   alias LiveChatApp.Users.User
   alias LiveChatApp.Chats.Chat
 
+  @primary_key {:id, :binary_id, autogenerate: true}
   schema "messages" do
     field(:content, :string)
     field(:status, :string, default: "unread")
 
     belongs_to(:user, User)
-    belongs_to(:chat, Chat)
+    belongs_to(:chat, Chat, type: :binary_id)
 
     timestamps()
   end

@@ -1,6 +1,6 @@
-<div class="container pb-10 mx-auto mb-10" id="demo-wrapper">
+<div class="container min-h-screen flex items-center" id="demo-wrapper">
   <%# Uses custom class and css to give the appropiate height -> app.css#246 %>
-  <div class="messages-box relative flex flex-col items-center w-full bg-white rounded-lg shadow px-5 lg:flex-row lg:items-start">
+  <div class="messages-box relative flex flex-col items-center w-full bg-white rounded-lg shadow px-5 border border-gray-300 lg:flex-row lg:items-start">
     <%= render "_topics.html", assigns %>
     <%= render "_messages.html", assigns %>
   </div>

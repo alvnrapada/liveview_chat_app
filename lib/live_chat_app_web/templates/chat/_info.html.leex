@@ -4,12 +4,12 @@
     <h5 class="font-bold">
       <%= @info.from %>
     </h5>
-    <span class="items-end text-xs text-gray-400">
+    <span class="items-end text-base text-gray-400">
       <time><%= get(@info, ~w(latest_message time)a) || @info.time %></time>
     </span>
   </div>
   <div class="flex items-center justify-between">
-    <p class="text-sm"><%= get(@info, ~w(latest_message message)a) %></p>
+    <p><%= get(@info, ~w(latest_message message)a) %></p>
     <%= if @info.unread_count > 0 do %>
       <span class="w-5 h-5 bg-red-600 text-white leading-5 text-xs text-center rounded-full">
         <%= @info.unread_count %>
