@@ -23,6 +23,6 @@ Features:
 - Authentication using POW Auth
 - Integrate TailwindCSS Framework
 - Realtime Messaging (LiveView, PubSub)
-- Unread messages counter (automatically reads all messages when conversation was open)
+- Unread messages counter (automatically reads all messages when the conversation was open)
 - Latest message preview (beside unread messages counter)
-- Search conversation
+- Search conversation feature
