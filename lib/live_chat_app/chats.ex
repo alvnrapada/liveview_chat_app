@@ -22,6 +22,8 @@ defmodule LiveChatApp.Chats do
     |> Repo.all()
   end
 
+  def get_topics(_), do: []
+
   def get(id) when is_binary(id) do
     Chat
     |> preload(^preloads())
@@ -33,6 +35,8 @@ defmodule LiveChatApp.Chats do
     |> where([u], u.id != ^id)
     |> Repo.all()
   end
+
+  def get_users(_), do: []
 
   def create_chat(params) do
     %Chat{}
