@@ -1,4 +1,4 @@
-# liveview_chat_app
+# LiveView Chat App
 LiveView Chat App with TailwindCSS and POW Auth Boilerplate 
 
 ![alt text](https://i.imgur.com/TbnTsGL.gif)
