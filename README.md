@@ -1,7 +1,7 @@
-# liveview_chat_app
+# LiveView Chat App
 LiveView Chat App with TailwindCSS and POW Auth Boilerplate 
 
-![alt text](https://i.imgur.com/8sietRZ.png)
+![alt text](https://i.imgur.com/TbnTsGL.gif)
 
 To start your Phoenix server:
 
@@ -18,4 +18,12 @@ Before going to the liveview chat app, first you need to:
 
 Right now I automatically created chat conversations based on the number of users, 
 so you can quickly check its functionality
-`
+
+Features:
+- Authentication using POW Auth
+- Integrate TailwindCSS Framework
+- Realtime Messaging (LiveView, PubSub)
+- Unread messages counter (automatically reads all messages when the conversation was open)
+- Latest message preview (beside unread messages counter)
+- Search conversation feature
+- Messages grouped by date sent
